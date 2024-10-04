@@ -31,7 +31,7 @@ registerMergnMethodChannel(flutterEngine, this, application, applicationContext)
 
 ### 2. Add Mergn Method Call Handler
 
-Add `MergnMethodCallHandler.kt` in the `mergnflutter` package and create the `MergnChannel` file in the `libs` package.
+Add `MergnMethodCallHandler.kt` in the `mergnflutter` package and add the `MergnChannel` file in the `lib` folder.
 
 ### 3. Initiate MERGN SDK Setup
 
