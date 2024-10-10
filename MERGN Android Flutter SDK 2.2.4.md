@@ -6,17 +6,19 @@ This documentation provides integration steps and usage instructions for incorpo
 
 ### 1. Include SDK in Your Project
 
-1. Place `mergn_sdk_flutter_2.2.4.aar` in the `libs` package under your app module.
-2. Add the following dependencies in your `build.gradle` (app):
+1. Place maven `{ url 'https://jitpack.io' }` in android project level `buid.gradle`.
 
-   ```groovy
-   implementation files('libs/mergn_sdk_flutter_2.2.4.aar')
-   implementation "androidx.room:room-runtime:2.4.0"
-   implementation "com.squareup.retrofit2:retrofit:2.9.0"
-   implementation "com.squareup.retrofit2:converter-gson:2.9.0"
    ```
+ allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+} 
+```
 
-3. Sync the project.
+2. Add `mergn_flutter_plugin_sdk:` in pubsec.yml
 
 ## Usage
 
@@ -29,16 +31,11 @@ MergnSDK.initialize(application)
 registerMergnMethodChannel(flutterEngine, this, application, applicationContext)
 ```
 
-### 2. Add Mergn Method Call Handler
-
-Add `MergnMethodCallHandler.kt` in the `mergnflutter` package and add the `MergnChannel` file in the `lib` folder.
-
 ### 3. Initiate MERGN SDK Setup
 
 Initialize the event manager and register your API Key:
 
-```kotlin
-MergnChannel.registerAPICall("Add Mergn API here");
+```MergnChannel.InitializeSDK();
 ```
 
 ### 4. Record Events
@@ -46,9 +43,9 @@ MergnChannel.registerAPICall("Add Mergn API here");
 Use the `EventManager` to record events by providing an event name and properties:
 
 ```kotlin
-String eventName = "Cart_Cancel_Item";
+String eventName = "Event Name";
 // Map<String, String> eventProperties = {"propertyName": "PropertyValue"}; // Optional property setup
-Map<String, String> eventProperties = Map();
+Map<String, String> eventProperties = Map(); // For empty properties
 MergnChannel.sendEvent(eventName, eventProperties);
 ```
 
@@ -66,9 +63,8 @@ MergnChannel.sendAttribute(attributeName, attributeValue);
 
 Record the login event when the user successfully logs in:
 
-```kotlin
-String uniqueIdentity = "fluttersdk@mergn.com";
-MergnChannel.login(uniqueIdentity);
+```
+MergnChannel.login("fluttersdk@mergn.com");  // Add unique Identifier
 ```
 
 **Unique Identity (mandatory)**: This value represents the customer's unique identity in your database, such as an ID or email.
@@ -77,7 +73,7 @@ MergnChannel.login(uniqueIdentity);
 
 Register the Firebase token to receive MERGN notifications:
 
-```kotlin
+```
 MergnChannel.firebaseToken(fcmToken.toString());
 ```
 
@@ -103,19 +99,4 @@ There are three scenarios in the app where you need to send sign-in attributes a
 1. When a new user creates a new account.
 2. When existing users log into the app.
 3. When the user is already logged in (important for capturing data of users who logged in previous versions of the app where the MERGN SDK was not integrated).
-
-## Proguard Rules
-
-Add the following Proguard rules while making a release build or app bundle:
-
-```pro
--keep public class com.mergn.insights.classes.** {
-    public protected *;
-}
--keep class com.mergn.insights.networkservices.API.** { *; }
--keep class com.mergn.insights.networkservices.requests.** { *; }
--keep class com.mergn.insights.networkservices.responses.** { *; }
--keep class com.mergn.insights.networkservices.RetrofitClient { *; }
--keep class com.mergn.insights.firebaseservices.** { *; }
--keep class com.mergn.insights.views.** { *; }
 ```
