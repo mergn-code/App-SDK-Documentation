@@ -8,7 +8,7 @@ This documentation provides integration steps and usage instructions for incorpo
 
 1. Place maven `{ url 'https://jitpack.io' }` in android project level `buid.gradle`.
 
-   ```
+```kotlin
  allprojects {
     repositories {
         google()
@@ -22,20 +22,20 @@ This documentation provides integration steps and usage instructions for incorpo
 
 ## Usage
 
-### 1. Initialize and Register Channel in Main Activity
+### 1. Initialize SDK
 
-Initialize the SDK and register the method channel in your main activity:
+Initialize the SDK.
 
 ```kotlin
-MergnSDK.initialize(application)
-registerMergnMethodChannel(flutterEngine, this, application, applicationContext)
+MergnSDK.initialize(application);
 ```
 
-### 3. Initiate MERGN SDK Setup
+### 2. Register API Key
 
-Initialize the event manager and register your API Key:
+Register your API Key:
 
-```MergnChannel.InitializeSDK();
+```kotlin
+MergnChannel.registerAPICall("API KEY");
 ```
 
 ### 4. Record Events
@@ -79,19 +79,6 @@ MergnChannel.firebaseToken(fcmToken.toString());
 
 This method should be called in any place where you would potentially land. Also, call this in `onNewToken()` and `onRefreshToken()` in your Firebase service.
 
-For push notifications, define the following service in your app manifest inside the `<application>` tag:
-
-```xml
-<service
-    android:name="com.mergn.insights.firebaseservices.FireBaseMessagingService"
-    android:exported="true"
-    android:enabled="true">
-    <intent-filter>
-        <action android:name="com.google.firebase.MESSAGING_EVENT" />
-    </intent-filter>
-</service>
-```
-
 ### Important Case
 
 There are three scenarios in the app where you need to send sign-in attributes and trigger the login event of the MERGN SDK:
@@ -99,4 +86,3 @@ There are three scenarios in the app where you need to send sign-in attributes a
 1. When a new user creates a new account.
 2. When existing users log into the app.
 3. When the user is already logged in (important for capturing data of users who logged in previous versions of the app where the MERGN SDK was not integrated).
-```
