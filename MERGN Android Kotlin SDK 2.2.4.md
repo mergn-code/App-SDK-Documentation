@@ -1,4 +1,4 @@
-# MERGN Android Kotlin SDK 2.2.4
+# MERGN Android Kotlin SDK 2.5.2
 
 This documentation provides integration steps and usage instructions for incorporating the MERGN SDK for Android Kotlin 2.2.4 into your Android project. Follow the steps below to initialize the SDK, record events, and manage attributes within your application.
 
@@ -110,6 +110,14 @@ Ensure to send the `remoteMessage` object without any modifications. Use the fol
 if (remoteMessage.getData().get("type").equals("app_sdk")) {
     EventManager().getEventManager().mergnNotification(remoteMessage, this)
 }
+```
+
+### 7. Set Notification Icon
+
+Notification Icon can be set using the followng method:
+
+```kotlin
+ EventManager().setNotificationIcon(R.mipmap.icon,this) // Android resource
 ```
 
 ## Important Cases
