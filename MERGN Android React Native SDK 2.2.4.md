@@ -20,7 +20,27 @@ This documentation provides integration steps and usage instructions for incorpo
 
 ## Usage
 
-### 1. Initialize and Register Channel in Main Activity
+### 1. Add mergn pacakge
+
+ override val reactNativeHost: ReactNativeHost = ReactNativeHostWrapper(
+        this,
+        object : DefaultReactNativeHost(this) {
+          override fun getPackages(): List<ReactPackage> {
+            val packages: MutableList<ReactPackage> = PackageList(this).packages
+            packages.add(MergnPackage())
+            return packages
+          }
+
+          override fun getJSMainModuleName(): String = ".expo/.virtual-metro-entry"
+
+          override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
+
+          override val isNewArchEnabled: Boolean = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
+          override val isHermesEnabled: Boolean = BuildConfig.IS_HERMES_ENABLED
+      }
+  )
+          
+### 2. Initialize and Register Channel in Main Activity
 
 Initialize the SDK and register the method channel in the `onCreate` method of your main activity:
 
@@ -28,13 +48,13 @@ Initialize the SDK and register the method channel in the `onCreate` method of y
 MergnSDK.initialize(this);
 ```
 
-### 2. Add Required Files
+### 3. Add Required Files
 
 - Add `MergnModule` and `MergnPackage` files, which are provided separately in `Mergn-files.zip`.
 - Place these files in the main package: `app/src/main/'project-package'`.
 - Add `MergnModule.js` in the React Native project root path.
 
-### 3. Initiate MERGN SDK Setup
+### 4. Initiate MERGN SDK Setup
 
 Import `MergnModule` and register your API Key on the first page of your app:
 
@@ -44,7 +64,7 @@ import MergnModule from '../MergnModule';
 MergnModule.registerApi('Insert API key provided by MERGN');
 ```
 
-### 4. Record Events
+### 5. Record Events
 
 Use the `EventManager` to record events by providing an event name and properties:
 
@@ -57,7 +77,7 @@ var eventName = "Enter Event Name";
 const message = await MergnModule.performEvent(eventName, eventPropertiesMap);
 ```
 
-### 5. Record Attributes
+### 6. Record Attributes
 
 Use the `AttributeManager` to record attributes by providing an attribute name and value:
 
@@ -67,7 +87,7 @@ var attributeValue = "react_android@mergn.com";
 const message = await MergnModule.setAttribute(attributeName, attributeValue);
 ```
 
-### 6. Login
+### 7. Login
 
 Record the login event when the user successfully logs in:
 
@@ -78,7 +98,7 @@ const message = await MergnModule.login(uniqueIdentifier);
 
 **Unique Identity (mandatory)**: This value represents the customer's unique identity in your database, such as an ID or email.
 
-### 7. Firebase Token Registration
+### 8. Firebase Token Registration
 
 Register the Firebase token to receive MERGN notifications:
 
