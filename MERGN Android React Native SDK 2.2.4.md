@@ -22,9 +22,12 @@ This documentation provides integration steps and usage instructions for incorpo
 
 ### 1. Add mergn pacakge
 
- override val reactNativeHost: ReactNativeHost = ReactNativeHostWrapper(
+ 
+  override val reactNativeHost: ReactNativeHost = ReactNativeHostWrapper(
+        
         this,
         object : DefaultReactNativeHost(this) {
+         
           override fun getPackages(): List<ReactPackage> {
             val packages: MutableList<ReactPackage> = PackageList(this).packages
             packages.add(MergnPackage())
