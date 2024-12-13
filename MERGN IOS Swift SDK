@@ -1,4 +1,3 @@
-
 # MERGN IOS SWIFT SDK 
 
 This documentation provides integration steps and usage instructions for incorporating the MERGN SDK for IOS SWift into your Android project. Follow the steps below to initialize the SDK, record events, and manage attributes within your application.
