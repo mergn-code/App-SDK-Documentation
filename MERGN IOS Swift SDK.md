@@ -28,31 +28,32 @@ let eventManager = EventManager.shared
 
 // Initialize the SDK with the API key
 let apiKey = "Insert Mergn API Key here"
-eventManager.registerApiKey(apiKey, applicationContext)
+EventManager.shared.registerAPI(clientApiKey:"API KEY")
+
+
 2. Record Events
 Use the EventManager to record events. Events can be tracked with a name and optional properties, such as user actions or product details.
 
 Here's how to record an event:
 
-swift
-Copy code
+
 let eventName = "Product_Clicked"
 let eventPropertiesMap: [String: String] = ["category": "Chips"]
 
 // Calling sendEvent on the shared instance with event properties
 EventManager.shared.sendEvent(eventName: eventName, properties: eventPropertiesMap)
+
 3. Record Attributes
 Attributes are pieces of user-related data, such as email or other custom data points. To record attributes, use the sendAttribute method.
 
 Example:
 
-swift
-Copy code
 EventManager.shared.sendAttribute(attributeName: "Email", attributeValue: "user@example.com")
+
 4. Login
 When a user logs in, you should record the login event. The postIdentification method allows you to send a unique identity for the user (such as an ID or email) to the MERGN SDK.
 
-swift
-Copy code
+
 EventManager.shared.postIdentification(identity: "user123@example.com")
+
 Unique Identity (mandatory): This value represents the customer's unique identity in your database, such as an ID or email.
