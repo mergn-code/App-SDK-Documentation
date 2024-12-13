@@ -30,8 +30,9 @@ let eventManager = EventManager.shared
 let apiKey = "Insert Mergn API Key here"
 EventManager.shared.registerAPI(clientApiKey:"API KEY")
 
+2 Record Events
 
-2. Record Events
+
 Use the EventManager to record events. Events can be tracked with a name and optional properties, such as user actions or product details.
 
 Here's how to record an event:
