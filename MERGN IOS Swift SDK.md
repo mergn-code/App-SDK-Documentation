@@ -2,7 +2,7 @@ This documentation provides integration steps and usage instructions for incorpo
 
 ## Integration Steps
 
-### 1. Include `mergn_ios` Framework in Your Project
+### 1. Include `mergn_ios` Framework in your Project
 
 To get started with the **MERGN iOS SDK**, you need to integrate the `mergn_ios` framework into your Xcode project. Follow these steps to add the SDK to your project:
 
