@@ -1,1 +1,56 @@
 
+# MERGN IOS SWIFT SDK 
+
+This documentation provides integration steps and usage instructions for incorporating the MERGN SDK for IOS SWift into your Android project. Follow the steps below to initialize the SDK, record events, and manage attributes within your application.
+
+## Integration Steps
+
+### 1. Include mergn_ios Framework in Your Project
+
+## Usage
+
+### 1. Initiate MERGN SDK Setup
+
+import mergn_ios
+
+// Use the singleton instance of EventManager
+let eventManager = EventManager.shared
+
+```kotlin
+val eventManager = EventManager()
+MergnSDK.initialize(application)
+
+val apiKey = "Insert Mergn API Key here"
+eventManager.registerApiKey(apiKey, applicationContext)
+```
+
+### 2. Record Events
+
+Use the `EventManager` to record events by providing an event name and properties:
+
+```kotlin
+ private var eventName = "Product_Clicked"
+ private var eventPropertiesMap: [String: String] = ["category":"Chips"]
+
+// Calling sendEvent on the shared instance with event properties
+EventManager.shared.sendEvent(eventName: eventName, properties: eventPropertiesMap)
+```
+
+### 3. Record Attributes
+
+Use the `AttributeManager` to record attributes by providing an attribute name and value:
+
+```kotlin
+ EventManager.shared.sendAttribute(attributeName: "Email", attributeValue: "Attribute_value")
+```
+
+### 4. Login
+
+Record the login event when the user successfully logs in:
+
+```kotlin
+EventManager.shared.postIdentification(identity: "identity")
+```
+
+**Unique Identity (mandatory)**: This value represents the customer's unique identity in your database, such as an ID or email.
+
