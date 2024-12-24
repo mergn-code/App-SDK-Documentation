@@ -6,7 +6,7 @@ This documentation provides integration steps and usage instructions for incorpo
 
 ### 1. Include SDK in Your Project
 
-1. Place `mergn_sdk_cordova_8.1.1.aar` in the following directory:
+1. Place `mergn_sdk_cordova_2.1.1.aar` in the following directory:
    ```
    platforms/android/app/src/main/libs
    ```
