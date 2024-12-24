@@ -1,4 +1,4 @@
-# MERGN KOTLIN SDK CORDOVA 2.8.1
+# MERGN SDK CORDOVA 2.8.1
 
 This documentation provides integration steps and usage instructions for incorporating the MERGN CORDOVA SDK 2.8.1 (Android/IOS) into your project. Follow these steps to initialize the SDK setup, record events, and manage attributes within your application.
 
@@ -6,7 +6,7 @@ This documentation provides integration steps and usage instructions for incorpo
 
 ### 1. Include SDK in Your Project
 
-1. Place `mergn_sdk_cordova_2.8.1.aar` in the following directory:
+1. Place `mergn_sdk_cordova_8.1.1.aar` in the following directory:
    ```
    platforms/android/app/src/main/libs
    ```
@@ -16,7 +16,7 @@ This documentation provides integration steps and usage instructions for incorpo
 Add the following dependencies to your `build.gradle` (app):
 
 ```groovy
-implementation files('src/main/libs/mergn-sdk-kotlin-cordova-2.4.4.aar') // Add latest version
+implementation files('src/main/libs/mergn_sdk_cordova_2.8.1.aar') // Add latest version
 implementation "androidx.room:room-runtime:2.4.0"
 implementation "com.squareup.retrofit2:retrofit:2.9.0"
 implementation "com.squareup.retrofit2:converter-gson:2.9.0"
@@ -33,7 +33,7 @@ Make sure to sync your project after adding the dependencies.
 Run the following command in the root directory of your Cordova project:
 
 ```bash
-cordova plugin add cordova-plugin-mergn@2.2.1  // Add Latest Version
+cordova plugin add cordova-plugin-mergn@2.2.2  // Add Latest Version
 ```
 
 ### 5. Update `config.xml`
