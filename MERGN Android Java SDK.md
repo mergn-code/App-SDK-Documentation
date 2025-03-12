@@ -108,6 +108,7 @@ There are three scenarios in the app where you need to send sign-in attributes a
 1. When a new user creates a new account.
 2. When existing users log into the app.
 3. When the user is already logged in (important for capturing data of users who logged in previous versions of the app where the MERGN SDK was not integrated).
+4. Whenever Identity updates, make sure eventManager.login("Unique_Identity") should be called before setting up the attributes. 
 
 ## Proguard Rules
 
