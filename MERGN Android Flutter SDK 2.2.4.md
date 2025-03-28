@@ -91,3 +91,20 @@ There are three scenarios in the app where you need to send sign-in attributes a
 MergnChannel.login("fluttersdk@mergn.com");  // Add unique Identifier
 ```
 should be called before setting up the attributes.
+
+## Proguard Rules
+
+Add the following Proguard rules while making a release build
+
+```pro
+# With R8 full mode generic signatures are stripped for classes that are not
+ # kept. Suspend functions are wrapped in continuations where the type argument
+ # is used.
+ -keep,allowobfuscation,allowshrinking class kotlin.coroutines.Continuation
+
+ # R8 full mode strips generic signatures from return types if not kept.
+ -if interface * { @retrofit2.http.* public * *(...); }
+ -keep,allowoptimization,allowshrinking,allowobfuscation class <3>
+
+ # With R8 full mode generic signatures are stripped for classes that are not kept.
+ -keep,allowobfuscation,allowshrinking class retrofit2.Response
