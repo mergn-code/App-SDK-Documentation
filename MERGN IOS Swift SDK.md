@@ -1,3 +1,5 @@
+# MERGN IOS 1.0.4
+
 This documentation provides integration steps and usage instructions for incorporating the **MERGN SDK** for iOS Swift into your iOS project. Follow the steps below to initialize the SDK, record events, and manage attributes within your application.
 
 ## Integration Steps
