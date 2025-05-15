@@ -1,16 +1,16 @@
 # MERGN Java SDK
 
-This documentation provides integration steps and usage instructions for incorporating the MERGN SDK for Java 2.2.4 into your Android project. Follow the steps below to initialize the SDK, record events, and manage attributes within your application.
+This documentation provides integration steps and usage instructions for incorporating the MERGN SDK for Java 3.7.1 into your Android project. Follow the steps below to initialize the SDK, record events, and manage attributes within your application.
 
 ## Integration Steps
 
 ### 1. Include SDK in Your Project
 
-1. Place `mergn-sdk-java-2.2.8.aar` in the `libs` package under your app module.
+1. Place `mergn-sdk-java-3.7.1.aar` in the `libs` package under your app module.
 2. Add the following dependencies in your `build.gradle` (app):
 
    ```groovy
-   implementation files('libs/mergn-sdk-java-2.2.8.aar')
+   implementation files('libs/mergn-sdk-java-3.7.1.aar')
    implementation "androidx.room:room-runtime:2.4.0"
    implementation "com.squareup.retrofit2:retrofit:2.9.0"
    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
@@ -23,9 +23,11 @@ This documentation provides integration steps and usage instructions for incorpo
 
 ### 1. Initiate MERGN SDK Setup
 
-Initialize the `EventManager` in the first activity of your app and register your API Key:
+Initialize the MERGN SDK in the application class.
+Initialize the `EventManager` in the application class and call registerApiKey Method:
 
 ```java
+MergnSDK.initialize(this);
 EventManager eventManager = new EventManager();  
 eventManager.registerApiKey("Enter API KEY", getApplicationContext());
 ```
