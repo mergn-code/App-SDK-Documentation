@@ -15,7 +15,14 @@ This documentation provides integration steps and usage instructions for incorpo
         mavenCentral()
         maven { url 'https://jitpack.io' }
     }
-} 
+}
+### 2. Include `APP_GROUP_ID_MERGN` from Xcode in your Project
+
+To enable seamless data sharing between your app and the Mergn SDK (and its extensions, like Notification Services), you must configure an App Group in every target of your application.
+
+- Key = APP_GROUP_ID_MERGN //Key Name should be same
+- Value = group.{app_bundle_identifier}.mergn // i.e group.com.demo.app.mergn
+
 ```
 
 2. Add `mergn_flutter_plugin_sdk:` in pubsec.yml
