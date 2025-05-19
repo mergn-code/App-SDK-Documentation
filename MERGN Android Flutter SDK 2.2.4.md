@@ -89,6 +89,23 @@ MergnChannel.firebaseToken(fcmToken.toString());
 
 This method should be called in any place where you would potentially land. Also, call this in `onNewToken()` and `onRefreshToken()` in your Firebase service.
 
+### 8. Notification Analytics
+Call the mentioned method in following methods
+
+```swift
+
+func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        EventManager.shared.notificationViewed(notificationData: notification.request) // Mergn Call
+    }
+
+ func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        EventManager.shared.notificationTapped(notificationData: response.notification.request) // Mergn Call
+    }
+
+```
+
+There are two mergn calls in different methods (Notification View and Notification Tapped).
+
 ### Important Case
 
 There are three scenarios in the app where you need to send sign-in attributes and trigger the login event of the MERGN SDK:
