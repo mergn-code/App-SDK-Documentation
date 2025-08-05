@@ -1,6 +1,6 @@
-# MERGN Android Kotlin SDK 2.5.2
+# MERGN Android Kotlin SDK 
 
-This documentation provides integration steps and usage instructions for incorporating the MERGN SDK for Android Kotlin 2.2.4 into your Android project. Follow the steps below to initialize the SDK, record events, and manage attributes within your application.
+This documentation provides integration steps and usage instructions for incorporating the MERGN SDK for Android Kotlin into your Android project. Follow the steps below to initialize the SDK, record events, and manage attributes within your application.
 
 ## Integration Steps
 
@@ -149,3 +149,52 @@ Add the following Proguard rules while making a release build or app bundle:
 -keep class com.mergn.insights.firebaseservices.** { *; }
 -keep class com.mergn.insights.views.** { *; }
 ```
+## Backup rules
+
+Add the following rules in the following files in xml package to exclude mergn sharedprefences and database backup.
+
+```
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude
+            domain="sharedpref"
+            path="app package name+mergn_prefs.xml" /> --> before + sign add app package name
+        <exclude domain="database" path="my_database" />
+        <exclude domain="database" path="my_database-wal" />
+        <exclude domain="database" path="my_database-shm" />
+    </cloud-backup>
+
+    <device-transfer>
+        <exclude
+            domain="sharedpref"
+            path="app package name+mergn_prefs.xml" /> --> before + sign add app package name
+        <exclude domain="database" path="my_database" />
+        <exclude domain="database" path="my_database-wal" />
+        <exclude domain="database" path="my_database-shm" />
+    </device-transfer>
+
+</data-extraction-rules>
+```
+
+
+
+```
+<full-backup-content>
+
+    <exclude
+        domain="sharedpref"
+        path="com.mergn.client+mergn_prefs.xml" />  --> before + sign add app package name
+    <exclude domain="database" path="my_database" />
+    <exclude domain="database" path="my_database-wal" />
+    <exclude domain="database" path="my_database-shm" />
+</full-backup-content>
+```
+
+Add following in the application manifest
+
+  ``` 
+   <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules">
+   ```
