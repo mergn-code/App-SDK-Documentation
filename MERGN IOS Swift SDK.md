@@ -1,4 +1,4 @@
-# MERGN IOS 1.0.4
+# MERGN IOS 1.0.5
 
 This documentation provides integration steps and usage instructions for incorporating the **MERGN SDK** for iOS Swift into your iOS project. Follow the steps below to initialize the SDK, record events, and manage attributes within your application.
 
@@ -49,7 +49,10 @@ Here's how to record an event:
 
 ```swift
 let eventName = "Product_Clicked"
-let eventPropertiesMap: [String: String] = ["category": "Chips"]
+let eventPropertiesMap: [String: String] = ["category": "Chips", "type": "Snacks"] //Send single value of property
+// For array type property
+
+let eventPropertiesMap: [String: Any] = ["category": "Chips", "foods": ["Fast Food","Sea Food"]] //Send multiple value of property
 
 // Calling sendEvent on the shared instance with event properties
 EventManager.shared.sendEvent(eventName: eventName, properties: eventPropertiesMap)
