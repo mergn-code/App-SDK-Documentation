@@ -1,4 +1,4 @@
-# MERGN IOS 1.0.5
+# MERGN IOS 1.0.6
 
 This documentation provides integration steps and usage instructions for incorporating the **MERGN SDK** for iOS Swift into your iOS project. Follow the steps below to initialize the SDK, record events, and manage attributes within your application.
 
@@ -195,6 +195,33 @@ Key= APP_GROUP_ID_MERGN
 value: This should be same as group name i.e. **group.com.demo.ios**
 ```
 
+
+### In App Deep link handling 
+
+In case of deep link required to handle from the client app.
+
+Implement the following
+
+Extend AppDelgate with InAppMergnDelegate
+```swift
+class AppDelegate: InAppMergnDelegate{}
+```
+
+Deep link will be receive in the following method of the InAppMergnDelegate
+```swift
+func DidReceiveDeepLink(_ url: String) {
+    }
+```
+
+Must add the following in
+
+```swift
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
+
+MergnSDKManager.shared.inAppDelegateMergn = self
+```
+Now In app deep link will be handled by the client application.
+Important note: In this case SDK will not trigger deep link action as client app expected to handle deep links.
 
 
 
