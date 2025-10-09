@@ -209,7 +209,7 @@ class AppDelegate: InAppMergnDelegate{}
 
 Deep link will be receive in the following method of the InAppMergnDelegate
 ```swift
-func DidReceiveDeepLink(_ url: String) {
+func DidReceiveInAppDeepLink(_ url: String) {
     }
 ```
 
